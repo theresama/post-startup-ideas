@@ -6,7 +6,8 @@
       <th>Title</th>
       <th>Description</th>
       <th>Industry</th>
-      <th colspan="3"></th>
+      <th>Keywords/Tags</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -16,6 +17,9 @@
         <td><%= idea.title %></td>
         <td><%= idea.description %></td>
         <td><%= idea.industry %></td>
+        <% idea.keyword_list.each do |keyword| %>
+          <a href="/ideas/tagged/<%= keyword %>"><%= keyword %></a>
+        <% end %>
         <td><%= link_to 'Show', idea %></td>
         <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
         <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>

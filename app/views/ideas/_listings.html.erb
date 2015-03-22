@@ -2,4 +2,9 @@
 	<p>Title: <%= idea.title %></p>
 	<p>Description: <%= idea.description %></p>
 	<p>Industry: <%= idea.industry %></p>
+	<p>Keywords/Tags:
+		<% idea.keyword_list.each do |keyword| %>
+			<a href="/ideas/tagged/<%= keyword %>"><%= keyword %></a>
+		<% end %>
+	</p>
 <% end %>

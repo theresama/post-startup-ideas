@@ -15,5 +15,12 @@
   <%= @idea.industry %>
 </p>
 
+<p>
+  <strong>Keywords/Tags:</strong>
+  <% @idea.keyword_list.each do |keyword| %>
+  	<a href="/ideas/tagged/<%= keyword %>"><%= keyword %></a>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>

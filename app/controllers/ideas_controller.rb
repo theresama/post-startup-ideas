@@ -5,7 +5,11 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
+    if params[:tag]
+      @ideas = Idea.tagged_with(params[:tag])
+    else
+      @ideas = Idea.all
+    end
   end
 
   # GET /ideas/1
@@ -70,6 +74,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:title, :description, :industry)
+      params.require(:idea).permit(:title, :description, :industry, :keyword_list)
     end
 end
