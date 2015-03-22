@@ -5,10 +5,16 @@
 
 	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title"><%= link_to idea.title, idea %></h3>
+	    <h3 class="panel-title"><%= link_to idea.title, idea %>
+	    	<small> 
+	    		<%= link_to "Like", like_idea_path(idea), method: :put %>
+	    	</small>
+	    </h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="col-md-3 data-div">
+	    	<p>Likes: <%= idea.get_likes.size %></p>
+	    	<p>Dislikes: <%= idea.get_dislikes.size %></p>
 	    	<p>Industry: 
 	        	<a href="/ideas/industry/<%= idea.industry %>"><%= idea.industry %></a>
 	        </p>

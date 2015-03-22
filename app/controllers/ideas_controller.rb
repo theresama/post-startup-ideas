@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :new]
+  before_action :logged_in_user, only: [:create, :destroy, :new, :like, :dislike]
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
   # GET /ideas
@@ -41,6 +41,21 @@ class IdeasController < ApplicationController
         format.html { render :new }
         format.json { render json: @idea.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def like
+    @idea = Idea.find(params[:id])
+    @idea.liked_by current_user
+    redirect_to @idea
+  end
+
+  def dislike
+    @idea = Idea.find(params[:id])
+    @idea.disliked_by current_user
+    respond_to do |format|
+      format.html {redirect_to @idea }
+      format.json { render json: { count: @idea.get_likes.size - @idea.get_disliked.size } }
     end
   end
 

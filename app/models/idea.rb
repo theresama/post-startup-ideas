@@ -6,4 +6,6 @@ class Idea < ActiveRecord::Base
 
 	acts_as_ordered_taggable # Alias for acts_as_taggable_on :tags
 	acts_as_ordered_taggable_on :keyword
+
+	acts_as_votable
 end

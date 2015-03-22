@@ -22,5 +22,15 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Likes:</strong>
+  <%= @idea.get_likes.size %>
+</p>
+
+<p>
+  <strong>Dislikes:</strong>
+  <%= @idea.get_dislikes.size %>
+</p>
+
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>

@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   get 'ideas/tagged/:tag', to: 'ideas#index', as: :tag
   get 'ideas/industry/:industry', to: 'ideas#index', as: :industry
   
-  resources :ideas
+  resources :ideas do
+    member do
+      put "like", to: "ideas#like"
+    end
+    
+  end
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
