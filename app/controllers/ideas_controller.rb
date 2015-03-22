@@ -7,6 +7,8 @@ class IdeasController < ApplicationController
   def index
     if params[:tag]
       @ideas = Idea.tagged_with(params[:tag])
+    elsif params[:industry]
+      @ideas = Idea.where(industry: params[:industry])
     else
       @ideas = Idea.all
     end

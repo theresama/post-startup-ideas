@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get 'ideas/tagged/:tag', to: 'ideas#index', as: :tag
+  get 'ideas/industry/:industry', to: 'ideas#index', as: :industry
   
   resources :ideas
   resources :users
