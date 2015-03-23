@@ -23,9 +23,11 @@
 	        	<a href="/ideas/industry/<%= idea.industry %>"><%= idea.industry %></a>
 	        </p>
 	    	<p>Keywords/Tags:
-	    		<% idea.keyword_list.each do |keyword| %>
-	    			<a href="/ideas/tagged/<%= keyword %>"><%= keyword %></a>
-	    		<% end %>
+	    		<p class="keyword-list">
+	    			<% idea.keyword_list.each do |keyword| %>
+	    				<a href="/ideas/tagged/<%= keyword %>"><span class="keywordtag"><%= keyword %></span></a>
+	    			<% end %>
+	    		</p>
 	    	</p>
 	    </div>
 	    <div class="col-md-9">
