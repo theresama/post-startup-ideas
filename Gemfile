@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 # Use bootstrap
 gem 'bootstrap-sass',       '3.2.0.0'
+# Font icons
+gem 'font-awesome-sass'
 # Hashes user password
 gem 'bcrypt',               '3.1.7'
 # Use SCSS for stylesheets

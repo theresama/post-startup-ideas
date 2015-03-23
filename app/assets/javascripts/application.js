@@ -15,3 +15,28 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+	$('.like')
+		.on('ajax:send', function () { $(this).addClass('loading'); })
+		.on('ajax:complete', function () { $(this).removeClass('loading'); })
+		.on('ajax:error', function () { 
+			console.log("ya dun goofed");
+		})
+		.on('ajax:success', function(e, data, status, xhr) { 
+			$(this).next(".likeCount").html(data.likecount); 
+			$(this).parent().find(".dislikeCount").html(data.dislikecount); 
+	});
+
+	 $('.dislike')
+		.on('ajax:send', function () { $(this).addClass('loading'); })
+		.on('ajax:complete', function () { $(this).removeClass('loading'); })
+		.on('ajax:error', function () { 
+		 	console.log("ya dun goofed");
+		})
+		.on('ajax:success', function(e, data, status, xhr) { 
+		 	$(this).prev(".likeCount").html(data.likecount); 
+		 	$(this).next(".dislikeCount").html(data.dislikecount); 
+	});
+})
+

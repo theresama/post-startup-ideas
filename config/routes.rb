@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :ideas do
     member do
       put "like", to: "ideas#like"
+      put "dislike", to: "ideas#dislike"
     end
     
   end

@@ -7,14 +7,18 @@
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><%= link_to idea.title, idea %>
 	    	<small> 
-	    		<%= link_to "Like", like_idea_path(idea), method: :put %>
 	    	</small>
 	    </h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="col-md-3 data-div">
-	    	<p>Likes: <%= idea.get_likes.size %></p>
-	    	<p>Dislikes: <%= idea.get_dislikes.size %></p>
+	    	<p>
+	    		</script>
+	    		<%= link_to(content_tag(:i,nil, class: 'fa fa-thumbs-o-up'), like_idea_path(idea), method: :put, :remote => true, data: { type: :json }, class: "like") %>
+	    			<span class="likeCount"><%= idea.get_likes.size %></span>
+    			<%= link_to(content_tag(:i,nil, class: 'fa fa-thumbs-o-down'), dislike_idea_path(idea), method: :put, :remote => true, data: { type: :json }, class: "dislike") %>
+	    			<span class="dislikeCount"><%= idea.get_dislikes.size %></span>
+	    	</p>
 	    	<p>Industry: 
 	        	<a href="/ideas/industry/<%= idea.industry %>"><%= idea.industry %></a>
 	        </p>
@@ -32,9 +36,3 @@
 
 	<% end %>
 </div>
-
-	
-
-
-
-

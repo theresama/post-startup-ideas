@@ -47,15 +47,20 @@ class IdeasController < ApplicationController
   def like
     @idea = Idea.find(params[:id])
     @idea.liked_by current_user
-    redirect_to @idea
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { likecount: @idea.get_likes.size, dislikecount: @idea.get_dislikes.size } }
+      format.js { render :layout => false }
+    end
   end
 
   def dislike
     @idea = Idea.find(params[:id])
     @idea.disliked_by current_user
     respond_to do |format|
-      format.html {redirect_to @idea }
-      format.json { render json: { count: @idea.get_likes.size - @idea.get_disliked.size } }
+      format.html { redirect_to :back }
+      format.json { render json: { likecount: @idea.get_likes.size, dislikecount: @idea.get_dislikes.size } }
+      format.js { render :layout => false }
     end
   end
 
