@@ -3,10 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .listings-wrapper{
-	width: 50%;
+
 }
 
 .idea{
 	padding-top: 30px;
 	padding-bottom: 30px;
+}
+
+.page-wrapper{
+	width: 90%;
+	margin: auto;
+}
+
+.fixed-side{
+	position: fixed;
+	top: 30%;
 }

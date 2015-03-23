@@ -12,6 +12,7 @@ class IdeasController < ApplicationController
     else
       @ideas = Idea.all
     end
+    @idea = Idea.new
   end
 
   # GET /ideas/1
