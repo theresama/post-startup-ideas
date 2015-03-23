@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       put "like", to: "ideas#like"
       put "dislike", to: "ideas#dislike"
+      #get "search", to: "ideas#index", as: :tag
     end
     
   end

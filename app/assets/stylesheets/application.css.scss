@@ -18,6 +18,25 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
  
+ html, body{
+ 	height: 100%;
+ 	width: 100%;
+ }
+ 
+ .sidebar{
+ 	background: #333;
+ 	height: 100%;
+ 	position: fixed;
+ 	
+ 	color: white;
+ }
+
+ .main{
+ 	height: 100%;
+ 	position: fixed;
+ 	overflow: auto;
+ }
+ 
  .margin-auto{
  	margin: auto;
  }
