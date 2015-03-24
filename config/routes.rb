@@ -13,13 +13,14 @@ Rails.application.routes.draw do
   #get 'ideas/search'
   post "ideas/search" => 'ideas#index'
   get "ideas/results"
-
+  get "ideas/graph", to: "ideas#industry_graph"
 
   
   resources :ideas do
     member do
       put "like", to: "ideas#like"
       put "dislike", to: "ideas#dislike"
+
       #get "search", to: "ideas#index", as: :tag
     end
     

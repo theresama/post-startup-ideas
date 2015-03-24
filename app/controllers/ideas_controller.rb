@@ -17,7 +17,7 @@ class IdeasController < ApplicationController
         @ideas = Idea.where("created_at between (?) and (?)", start_date, end_date)
         if params[:num]
           num = params[:num]
-          @ideas = Idea.highest_voted.limit(num)
+          @ideas = @ideas.highest_voted.limit(num)
         end
     else
       @ideas = Idea.all
@@ -53,6 +53,27 @@ class IdeasController < ApplicationController
         format.json { render json: @idea.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def industry_graph
+    @health = Idea.where(industry: "Health")
+    @technology = Idea.where(industry: "Technology")
+    @education = Idea.where(industry: "Education")
+    @finance = Idea.where(industry: "Finance")
+    @travel = Idea.where(industry: "Travel")
+    respond_to do |format|
+      format.html
+      format.json{
+        render :json =>  { :health_count => @health.count,
+                            :technology_count => @technology.count, 
+                            :technology_count => @technology.count, 
+                            :education_count => @education.count,
+                            :finance_count => @finance.count,
+                            :travel_count => @travel.count }
+      }
+    end
+    
+    
   end
 
   def sort_likes

@@ -1,0 +1,78 @@
+
+<h1>Distribution of Ideas</h1>
+<div id="chartdiv" style="width: 640px; height: 400px;"></div>
+
+<script>
+	$(function(){
+		$.ajax({
+		    type: "GET",
+		    url: "/ideas/graph",
+		    dataType: "json",
+		    success: function(data){
+		        console.log(JSON.stringify(data))
+		        var chartData = [{
+		        	"Industry": "Health",
+		       		"Ideas": String(data.health_count)
+		        },
+		        {
+	        	 	"Industry": "Technology",
+        			"Ideas": String(data.technology_count)
+		        },
+		        {
+	        	 	"Industry": "Education",
+        			"Ideas": String(data.education_count)
+		        },
+		        {
+	        	 	"Industry": "Finance",
+        			"Ideas": String(data.finance_count)
+		        },
+		        {
+	        	 	"Industry": "Travel",
+        			"Ideas": String(data.travel_count)
+		        }];
+
+		        console.log(chartData);
+
+	        	configChart = function() {
+	              console.log("in here")
+	              var chart = new AmCharts.AmSerialChart();
+	              chart.dataProvider = chartData;
+	              chart.categoryField = "Industry";
+
+	              var categoryAxis = chart.categoryAxis;
+                  categoryAxis.gridPosition = "start";
+                  categoryAxis.title = "Industry"
+                  categoryAxis.axisColor = "#DADADA";
+                  categoryAxis.dashLength = 3;
+
+                  var valueAxis = new AmCharts.ValueAxis();
+	              valueAxis.dashLength = 3;
+	              valueAxis.axisAlpha = 0.2;
+	              valueAxis.position = "left";
+	              valueAxis.title = "Number of Ideas";
+	              valueAxis.gridAlpha = 0.15;
+	              chart.addValueAxis(valueAxis);
+
+	              var graph = new AmCharts.AmGraph();
+	              graph.valueField = "Ideas";
+	              graph.type = "column";
+	              graph.balloonText = "[[category]]: <b>[[value]]</b>";
+	              graph.fillColors = "#ADD981";
+	              graph.fillAlphas = 0.8;
+	              graph.lineColor = "#ADD981";
+	              chart.addGraph(graph);
+
+	              chart.write('chartdiv');
+	            };
+
+	            if (AmCharts.isReady) {
+	              configChart();
+	            } else {
+	              AmCharts.ready(configChart);
+	            }
+
+		    }        
+		});
+
+	})
+</script>
