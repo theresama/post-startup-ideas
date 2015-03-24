@@ -13,11 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts
 
 $(function(){
+	
+
 	$('.like')
 		.on('ajax:send', function () { $(this).addClass('loading'); })
 		.on('ajax:complete', function () { $(this).removeClass('loading'); })

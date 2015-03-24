@@ -53,19 +53,18 @@
 
 	<script>
 
+	$('#query').tagsInput({
+		'height':'50px',
+		'width' : '230px',
+		'delimiter': [',']
+	});
+
 	$(function(){
-		
-		$("#searchDate").on('click', function(){
+			$("#searchDate").on('click', function(){
 			var start = $('#startDate').val()
 			var end = $('#endDate').val()
 			console.log(start);
 			console.log(end);
-		});
-
-		$('#query').tagsInput({
-			'height':'50px',
-			'width' : '230px',
-			'delimiter': [',']
 		});
 
 		$("#search").on('click', function(){
