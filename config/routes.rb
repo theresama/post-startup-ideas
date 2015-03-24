@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   get 'ideas/tagged/:tag', to: 'ideas#index', as: :tag
   get 'ideas/industry/:industry', to: 'ideas#index', as: :industry
+  #post 'ideas/search' => "ideas#search_date"
+  #get 'ideas/search'
+  post "ideas/search" => 'ideas#index'
+  get "ideas/results"
+
+
   
   resources :ideas do
     member do

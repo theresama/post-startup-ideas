@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Date:</strong>
+  <%= @idea.created_at %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @idea.title %>
 </p>
@@ -31,6 +36,8 @@
   <strong>Dislikes:</strong>
   <%= @idea.get_dislikes.size %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>

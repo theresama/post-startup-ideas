@@ -1,11 +1,18 @@
+<div class="form-group">
+  <%= form_tag(ideas_search_path) do %>
+     <%= select_date Date.today, :prefix => :start_date  %>
+     <%= select_date Date.today, :prefix => :end_date  %>
+     <%= text_field_tag :num, (params[:num] or 5)  %>
+     <%= submit_tag "Submit", :disable_with => "Submitting..." %>
+  <% end %>
+
+
+</div>
 
 <div class="page-wrapper">
   <h2>Startup ideas:</h2>
   <%= render "ideas/listings" %>
 </div>
-
-
-
 
 
 

@@ -8,4 +8,8 @@ class Idea < ActiveRecord::Base
 	acts_as_ordered_taggable_on :keyword
 
 	acts_as_votable
+
+	def self.highest_voted
+	  self.order("cached_votes_score DESC")
+	end
 end

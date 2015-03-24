@@ -9,6 +9,16 @@ class IdeasController < ApplicationController
       @ideas = Idea.tagged_with(params[:tag])
     elsif params[:industry]
       @ideas = Idea.where(industry: params[:industry])
+    elsif params[:start_date] && params[:end_date]
+        start_params = params[:start_date]
+        end_params = params[:end_date]
+        start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
+        end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
+        @ideas = Idea.where("created_at between (?) and (?)", start_date, end_date)
+        if params[:num]
+          num = params[:num]
+          @ideas = Idea.highest_voted.limit(num)
+        end
     else
       @ideas = Idea.all
     end
@@ -42,6 +52,17 @@ class IdeasController < ApplicationController
         format.html { render :new }
         format.json { render json: @idea.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def sort_likes
+    if params[:num]
+      num = params[:num]
+      @ideas = Idea.highest_voted
+    end
+    respond_to do |format|
+        format.html { redirect_to ideas_path }
+        format.json { render json: {  } }
     end
   end
 

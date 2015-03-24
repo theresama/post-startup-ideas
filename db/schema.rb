@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322212002) do
+ActiveRecord::Schema.define(version: 20150324072636) do
 
   create_table "ideas", force: true do |t|
     t.string   "title"
@@ -20,8 +20,22 @@ ActiveRecord::Schema.define(version: 20150322212002) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
 
+  add_index "ideas", ["cached_votes_down"], name: "index_ideas_on_cached_votes_down"
+  add_index "ideas", ["cached_votes_score"], name: "index_ideas_on_cached_votes_score"
+  add_index "ideas", ["cached_votes_total"], name: "index_ideas_on_cached_votes_total"
+  add_index "ideas", ["cached_votes_up"], name: "index_ideas_on_cached_votes_up"
+  add_index "ideas", ["cached_weighted_average"], name: "index_ideas_on_cached_weighted_average"
+  add_index "ideas", ["cached_weighted_score"], name: "index_ideas_on_cached_weighted_score"
+  add_index "ideas", ["cached_weighted_total"], name: "index_ideas_on_cached_weighted_total"
   add_index "ideas", ["user_id", "created_at"], name: "index_ideas_on_user_id_and_created_at"
 
   create_table "socials", force: true do |t|

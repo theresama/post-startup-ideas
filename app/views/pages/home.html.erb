@@ -1,4 +1,6 @@
 <!-- Main component for a primary marketing message or call to action -->
+
+<% if not logged_in? %>
   <div class="jumbotron">
     <h1 class="text-center">Startup Ideas</h1>
     <p class="text-center lead">Share your startup ideas, get feedback, and check out other ideas!</p>
@@ -6,5 +8,11 @@
       <a class="btn btn-lg btn-primary" href="#" role="button">Sign up</a>
     </p>
   </div>
+<% else %>
+  <h2>Startup ideas:</h2>
+<% end %> 
+  
 
+<div class="page-wrapper">
   <%= render "ideas/listings" %>
+</div>

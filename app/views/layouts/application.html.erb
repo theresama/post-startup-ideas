@@ -30,15 +30,17 @@
 		<% end %>
 
 		<div class="col-lg-12">
-		    <div class="input-group">
+		    <div class="form-group">
 		    	<form class="input-group" id="searchform">
 		    		<small>Search Tags</small>
 		    		<input type="text" class="form-control" id="query">
 		    		<button class="btn btn-default" type="button" id="search">Go!</button>
 		    	</form>
-			    
 		   	</div><!-- /input-group -->
-		</div><!-- /.col-lg-6 -->
+
+		   	
+
+		</div>
 	</div>
 	<div class="col-md-9 col-md-offset-3 main">
 		<% flash.each do |message_type, message| %>
@@ -51,6 +53,18 @@
 	<script>
 
 	$(function(){
+
+		
+		$("#searchDate").on('click', function(){
+			var start = $('#startDate').val()
+			var end = $('#endDate').val()
+			console.log(start);
+			console.log(end);
+		});
+
+
+
+
 		$('#query').tagsInput({
 			'height':'50px',
 			'width' : '230px',
