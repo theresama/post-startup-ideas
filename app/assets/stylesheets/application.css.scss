@@ -24,99 +24,107 @@
  $orange: #f39c12;
  
  html, body{
- 	height: 100%;
- 	width: 100%;
+   height: 100%;
+   width: 100%;
  }
 
  .logo{
- 	a{
- 		color: $lightbulb;
- 	}
- 	
+   a{
+      color: $lightbulb;
+   }
+   
  }
 
  .btn{
- 	border: none;
+   border: none;
  }
 
  .btn-c{
- 	background-color: $orange;
- 	color: #fafafa;
+   background-color: $orange;
+   color: #fafafa;
  }
 
  .btn-m{
- 	background-color: $main;
- 	color: #fafafa;
- 	border: none;
+   background-color: $main;
+   color: #fafafa;
+   border: none;
  }
 
  @media (max-width: 992px){
- 	.sidebar{
- 		display: none;
- 	}
+   .sidebar{
+      display: none;
+   }
 
- 	.main{
- 		padding-top: 60px;
- 	}
- 	nav{
- 		display: block;
- 	}
+   .main{
+      padding-top: 60px;
+   }
+   nav{
+      display: block;
+   }
  }
 
  @media (min-width: 993px){
- 	nav{
- 		display: none;
- 	}
- 	.sidebar{
- 		background: $main;
- 		height: 100%;
- 		position: fixed;
- 		
- 		color: white;
- 		
- 		display: flex;
- 		justify-content: center;
- 		flex-direction: column;
- 		
- 		input{
- 			color: #333;
- 		}
+   nav{
+      display: none;
+   }
+   .sidebar{
+      background: $main;
+      height: 100%;
+      position: fixed;
+      
+      color: white;
+      
+      display: -webkit-flex;
+      
+      display: -ms-flexbox;
+      
+      display: flex;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      
+      input{
+         color: #333;
+      }
 
- 		.sidebar-container{
- 			.side-links{
- 				width: 80%;
- 				margin: auto;
- 				padding: 0;
- 				list-style-type: none;
- 				li{
- 					padding: 10px;
- 					font: 1.2em sans-serif;
- 					a{
- 						color: white;
- 					}
- 				}
- 			}
- 			
- 		}
- 	}
- 	
+      .sidebar-container{
+         .side-links{
+            width: 80%;
+            margin: auto;
+            padding: 0;
+            list-style-type: none;
+            li{
+               padding: 10px;
+               font: 1.2em sans-serif;
+               a{
+                  color: white;
+               }
+            }
+         }
+         
+      }
+   }
+   
  }
  
 
 
  .main{
- 	height: 100%;
- 	position: fixed;
- 	overflow: auto;
- 	padding-bottom: 50px;
+   height: 100%;
+   position: fixed;
+   overflow: auto;
+   padding-bottom: 50px;
  }
  
  .margin-auto{
- 	margin: auto;
+   margin: auto;
  }
 
  .data-div{
- 	border-right: 1px solid #ececec;
+   border-right: 1px solid #ececec;
  }
 
  .form-signin {
@@ -134,9 +142,7 @@
  .form-signin .form-control {
    position: relative;
    height: auto;
-   -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box;
+   box-sizing: border-box;
    padding: 10px;
    font-size: 16px;
  }
