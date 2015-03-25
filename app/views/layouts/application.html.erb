@@ -13,35 +13,49 @@
 <body>
 
 	<div class="col-md-3 sidebar">
-		<li class=""><a href="/">Home</a></li>
-		<li><a href="/ideas">Ideas</a></li>
-		<li><a href="/ideas/new">New Idea</a></li>
-		<li><a href="/ideas/graph">Stats</a></li>
-		<% if logged_in? %>
-		  <li>
-		    <%= link_to "Me", current_user %>
-		  </li>
-		  <li>
-		    <%= link_to "Logout", logout_path, method: "delete" %>       
-		  </li>
-		<% else %>
-		  <li>
-		      <%= link_to "Login", login_path %>
-		  </li>
-		<% end %>
 
-		<div class="col-lg-12">
-		    <div class="form-group">
-		    	<form class="input-group" id="searchform">
-		    		<small>Search Tags</small>
-		    		<input type="text" class="form-control" id="query">
-		    		<button class="btn btn-default" type="button" id="search">Go!</button>
-		    	</form>
-		   	</div><!-- /input-group -->
+		<div class="sidebar-container ">
 
-		   	
+			<div class="logo text-center">
+				<i class="fa fa-lightbulb-o fa-5x"></i>
+				<h1>Startup Ideas</h1>
+			</div>
 
+			<hr></hr>
+
+			<ul class="side-links">
+				<li class=""><a href="/">Home</a></li>
+				<li><a href="/ideas">Ideas</a></li>
+				<li><a href="/ideas/new">New Idea</a></li>
+				<li><a href="/ideas/graph">Stats</a></li>
+				<% if logged_in? %>
+				  <li>
+				    <%= link_to "My Ideas", current_user %>
+				  </li>
+				  <li>
+				    <%= link_to "Logout", logout_path, method: "delete" %>       
+				  </li>
+				<% else %>
+				  <li>
+				      <%= link_to "Login", login_path %>
+				  </li>
+				<% end %>
+				
+			</ul>
+
+			<div class="col-lg-12">
+			    <form class="input-group" id="searchForm">
+			      	<input type="text" class="form-control" placeholder="Search tags" id="query">
+			      	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="button" id="search" value="test">Go!</button>
+			      	</span>
+			    </form><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+
+			
 		</div>
+
+
 	</div>
 	<div class="col-md-9 col-md-offset-3 main">
 		<% flash.each do |message_type, message| %>
@@ -50,31 +64,6 @@
 		<%= yield %>
 		<%= render 'layouts/footer' %>
 	</div>
-
-	<script>
-
-	$('#query').tagsInput({
-		'height':'50px',
-		'width' : '230px',
-		'delimiter': [',']
-	});
-
-	$(function(){
-			$("#searchDate").on('click', function(){
-			var start = $('#startDate').val()
-			var end = $('#endDate').val()
-			console.log(start);
-			console.log(end);
-		});
-
-		$("#search").on('click', function(){
-			var query = $("#query").val();
-			console.log(query);
-			window.location.replace("/ideas/tagged/" + query);
-		})
-	})
-	</script>
-
 
 </body>
 </html>

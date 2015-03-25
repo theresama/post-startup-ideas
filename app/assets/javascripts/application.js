@@ -18,7 +18,27 @@
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts
 
+$('#query').tagsInput({
+	'height':'50px',
+	'width' : '230px',
+	'delimiter': [',']
+});
+
 $(function(){
+
+	$("#searchDate").on('click', function(){
+		var start = $('#startDate').val()
+		var end = $('#endDate').val()
+		console.log(start);
+		console.log(end);
+	});
+
+	$("#searchForm").on('submit', function(e){
+		e.preventDefault();
+		var query = $("#query").val();
+		console.log(query);
+		window.location.replace("/ideas/tagged/" + query);
+	})
 	
 
 	$('.like')

@@ -1,43 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @idea.created_at %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @idea.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @idea.description %>
-</p>
-
-<p>
-  <strong>Industry:</strong>
-  <%= @idea.industry %>
-</p>
-
-<p>
-  <strong>Keywords/Tags:</strong>
-  <% @idea.keyword_list.each do |keyword| %>
-  	<a href="/ideas/tagged/<%= keyword %>"><%= keyword %></a>
-  <% end %>
-</p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @idea.get_likes.size %>
-</p>
-
-<p>
-  <strong>Dislikes:</strong>
-  <%= @idea.get_dislikes.size %>
-</p>
+<div class="jumbotron">
+  <h1><%= @idea.title %></h1>
+  <p>Idea by: <%= @idea.user.name %></p>
+</div>
 
 
+<div class="col-md-8 data-div idea-profile-desc">
+  <h2><strong>Description:</strong></h2>
+  <p>
+    <%= @idea.description.gsub(/\n/, '<br/>').html_safe %>
+  </p>
+</div>
+<div class="col-md-4">
+  <p>
+    <%= link_to(content_tag(:i,nil, class: 'fa fa-thumbs-o-up'), like_idea_path(@idea), method: :put, :remote => true, data: { type: :json }, class: "like") %>
+      <span class="likeCount"><%= @idea.get_likes.size %></span>
+    <%= link_to(content_tag(:i,nil, class: 'fa fa-thumbs-o-down'), dislike_idea_path(@idea), method: :put, :remote => true, data: { type: :json }, class: "dislike") %>
+      <span class="dislikeCount"><%= @idea.get_dislikes.size %></span>
+  </p>
+  <p>
+    <strong>Date:</strong>
+    <%= @idea.created_at %>
+  </p>
+  <p>
+    <strong>Industry:</strong>
+    <a href="/ideas/industry/<%= @idea.industry %>"><%= @idea.industry %></a>
+  </p>
+  <p>
+    <strong>Keywords/Tags:</strong>
+    <% @idea.keyword_list.each do |keyword| %>
+      <a href="/ideas/tagged/<%= keyword %>"><%= keyword %></a>
+    <% end %>
+  </p>
+</div>
 
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>

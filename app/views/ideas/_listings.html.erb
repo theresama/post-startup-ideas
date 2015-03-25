@@ -1,7 +1,17 @@
 
-
 <div class="listings-wrapper margin-auto">
-	<% @ideas.order(cached_votes_score: :desc).each do |idea| %>
+
+	<div class="form-group">
+	  <%= form_tag(ideas_search_path) do %>
+	     <%= select_date Date.today, :prefix => :start_date  %>
+	     <%= select_date Date.today, :prefix => :end_date  %>
+	     <%= text_field_tag :num, (params[:num] or 5)  %>
+	     <%= submit_tag "Submit", :disable_with => "Submitting..." %>
+	  <% end %>
+	</div>
+
+	<% @ideas.each do |idea| %>
+
 
 	<div class="panel panel-default">
 	  <div class="panel-heading">
@@ -30,10 +40,23 @@
 	    		</p>
 	    	</p>
 	    </div>
-	    <div class="col-md-9">
-	    	<p><%= idea.description %></p>
+	    <div class="col-md-9 idea-desc">
+	    	<p class="desc">
+	    		<%= idea.description.gsub(/\n/, '<br/>').html_safe %>
+	    	</p>
+	    	<small><%= link_to "Permalink", idea %> </small>
+
 	    </div>
 	  </div>
+	  <% if idea.user == current_user %>
+	  <div class="panel-footer">
+		<small>
+		  <%= link_to 'Edit', edit_idea_path(idea) %> | 
+		  <%= link_to 'Delete', idea, method: :delete, data: { confirm: 'Are you sure?' } %> 
+		</small>
+	  </div>
+	  <% end %>
+	  
 	</div>
 
 	<% end %>
