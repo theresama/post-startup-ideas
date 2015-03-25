@@ -18,13 +18,40 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
  
+ $main: #e74c3c;
+ $lightbulb: #f1c40f;
+ $grey: #34495e;
+ $orange: #f39c12;
+ 
  html, body{
  	height: 100%;
  	width: 100%;
  }
+
+ .logo{
+ 	a{
+ 		color: $lightbulb;
+ 	}
+ 	
+ }
+
+ .btn{
+ 	border: none;
+ }
+
+ .btn-c{
+ 	background-color: $orange;
+ 	color: #fafafa;
+ }
+
+ .btn-m{
+ 	background-color: $main;
+ 	color: #fafafa;
+ 	border: none;
+ }
  
  .sidebar{
- 	background: #333;
+ 	background: $main;
  	height: 100%;
  	position: fixed;
  	
@@ -40,11 +67,16 @@
 
  	.sidebar-container{
  		.side-links{
+ 			width: 80%;
+ 			margin: auto;
  			padding: 0;
  			list-style-type: none;
- 			text-align: center;
  			li{
  				padding: 10px;
+ 				font: 1.2em sans-serif;
+ 				a{
+ 					color: white;
+ 				}
  			}
  		}
  		
@@ -55,6 +87,7 @@
  	height: 100%;
  	position: fixed;
  	overflow: auto;
+ 	padding-bottom: 50px;
  }
  
  .margin-auto{

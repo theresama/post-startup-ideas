@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 	    if @user.save!
 	    	log_in @user
 	    	flash[:success] = "Sign up successful!"
-	      	redirect_to root
+	      	redirect_to root_url
 	    end
 	end
 

@@ -1,9 +1,10 @@
 <% provide(:title, @user.name) %>
 <div class="row">
 
+  <h3><%= @user.name %>'s Ideas:</h3>
   <div class="col-md-8">
     <% if @user.ideas.any? %>
-      <h3><%= @user.name %>'s Ideas:</h3>
+      
       <ol class="ideas">
       	<% @user.ideas.each do |idea| %>
       		<div class="panel panel-default">
@@ -39,8 +40,14 @@
                 </div>
               </div>
             </div>
-		<% end %>
-      </ol>
+
+      
+      <% end %>
+    <% else %>
+      You haven't posted any ideas yet!
+    </ol>
+      
     <% end %>
+    
   </div>
 </div>

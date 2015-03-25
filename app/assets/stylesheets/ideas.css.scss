@@ -2,8 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.listings-wrapper{
+$orange: #f39c12;
+$main: #e74c3c;
 
+.listings-wrapper{
+	padding-top: 30px;
 }
 
 .idea{
@@ -49,10 +52,10 @@ $lines-to-show: 5;
 }
 
 .keywordtag{
-	background: #cecece;
-	border: 1px solid #e97ac4;
+	background: $orange;
+	color: white;
 	border-radius: 4px;
-	padding: 3px 5px;
+	padding: 5px 10px;
 }
 
 .keyword-list{

@@ -13,21 +13,22 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class:"form-control", rows:15 %>
   </div>
   <div class="field">
     <%= f.label :industry %><br>
-    <%= f.select :industry, options_for_select(["Health", "Technology", "Education", "Finance", "Travel"]), :class => 'form-control' %>
+    <%= f.select :industry, options_for_select(["Health", "Technology", "Education", "Finance", "Travel"]), class:"selectpicker" %>
   </div>
   <div class="field">
     <%= f.label :keyword_list, "Tags (separated by commas)" %><br>
-    <%= f.text_field :keyword_list %>
+    <%= f.text_field :keyword_list, class:"form-control" %>
   </div>
+  <Br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Post Idea", class:"btn btn-block btn-c"%>
   </div>
 <% end %>

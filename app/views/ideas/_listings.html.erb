@@ -1,14 +1,33 @@
 
 <div class="listings-wrapper margin-auto">
 
-	<div class="form-group">
-	  <%= form_tag(ideas_search_path) do %>
-	     <%= select_date Date.today, :prefix => :start_date  %>
-	     <%= select_date Date.today, :prefix => :end_date  %>
-	     <%= text_field_tag :num, (params[:num] or 5)  %>
-	     <%= submit_tag "Submit", :disable_with => "Submitting..." %>
-	  <% end %>
+	<div class="well" style="overflow: auto;">
+		<h4>Filter ideas:</h4>
+		<div class="form-group">
+		  <%= form_tag(ideas_search_path) do %>
+		  	<div class="col-md-4">
+	  			<b>From:</b> <br>
+	  		    <%= select_date Date.today, :prefix => :start_date  %><br>
+		  	</div>
+		  	<div class="col-md-4">
+		  		<b>To:</b> <br>
+		  		<%= select_date Date.today, :prefix => :end_date  %><br>
+		  	</div>
+		  	<div class="col-md-2">
+		  		<b>Show top</b> <br>
+		  		<%= text_field_tag :num, (params[:num] or 5), class:"form-control", style:"width: 45px; height: 20px; display: inline;"  %> <b>ideas </b>
+		  		
+		  	</div>
+		  	<div class="col-md-2">
+		  		<%= submit_tag "Search", :disable_with => "Submitting...", class:"btn btn-primary btn-c", style:"margin-top: 10px;" %>
+		  	</div>
+
+		  <% end %>
+		</div>
 	</div>
+
+
+	<h2>Ideas:</h2>
 
 	<% @ideas.each do |idea| %>
 

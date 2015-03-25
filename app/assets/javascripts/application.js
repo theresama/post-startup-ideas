@@ -26,6 +26,8 @@ $('#query').tagsInput({
 
 $(function(){
 
+	$('#idea_industry').selectpicker();
+
 	$("#searchDate").on('click', function(){
 		var start = $('#startDate').val()
 		var end = $('#endDate').val()
