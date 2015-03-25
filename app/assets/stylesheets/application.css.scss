@@ -49,39 +49,60 @@
  	color: #fafafa;
  	border: none;
  }
- 
- .sidebar{
- 	background: $main;
- 	height: 100%;
- 	position: fixed;
- 	
- 	color: white;
- 	
- 	display: flex;
- 	justify-content: center;
- 	flex-direction: column;
- 	
- 	input{
- 		color: #333;
+
+ @media (max-width: 992px){
+ 	.sidebar{
+ 		display: none;
  	}
 
- 	.sidebar-container{
- 		.side-links{
- 			width: 80%;
- 			margin: auto;
- 			padding: 0;
- 			list-style-type: none;
- 			li{
- 				padding: 10px;
- 				font: 1.2em sans-serif;
- 				a{
- 					color: white;
- 				}
- 			}
- 		}
- 		
+ 	.main{
+ 		padding-top: 60px;
+ 	}
+ 	nav{
+ 		display: block;
  	}
  }
+
+ @media (min-width: 993px){
+ 	nav{
+ 		display: none;
+ 	}
+ 	.sidebar{
+ 		background: $main;
+ 		height: 100%;
+ 		position: fixed;
+ 		
+ 		color: white;
+ 		
+ 		display: flex;
+ 		justify-content: center;
+ 		flex-direction: column;
+ 		
+ 		input{
+ 			color: #333;
+ 		}
+
+ 		.sidebar-container{
+ 			.side-links{
+ 				width: 80%;
+ 				margin: auto;
+ 				padding: 0;
+ 				list-style-type: none;
+ 				li{
+ 					padding: 10px;
+ 					font: 1.2em sans-serif;
+ 					a{
+ 						color: white;
+ 					}
+ 				}
+ 			}
+ 			
+ 		}
+ 	}
+ 	
+ }
+ 
+
 
  .main{
  	height: 100%;
