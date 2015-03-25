@@ -38,8 +38,9 @@ $(function(){
 	$("#searchForm").on('submit', function(e){
 		e.preventDefault();
 		var query = $("#query").val();
-		console.log(query);
-		window.location.replace("/ideas/tagged/" + query);
+		if (query != ""){
+			window.location.replace("/ideas/tagged/" + query);
+		}		
 	})
 	
 
