@@ -27,9 +27,12 @@
   </p>
   <p>
     <strong>Keywords/Tags:</strong>
-    <% @idea.keyword_list.each do |keyword| %>
-      <a href="/ideas/tagged/<%= keyword %>"><span class="keywordtag"><%= keyword %></span></a>
-    <% end %>
+    <p class="keyword-list">
+      <% @idea.keyword_list.each do |keyword| %>
+        <a href="/ideas/tagged/<%= keyword %>"><span class="keywordtag"><%= keyword %></span></a>
+      <% end %>
+    </p>
+    
   </p>
 </div>
 
