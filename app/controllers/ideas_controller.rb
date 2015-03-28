@@ -19,6 +19,7 @@ class IdeasController < ApplicationController
           num = params[:num]
           @ideas = @ideas.highest_voted.limit(num)
         end
+        #render :json =>  { :status => :ok }
     else
       @ideas = Idea.all
     end
