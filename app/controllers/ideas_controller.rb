@@ -14,10 +14,11 @@ class IdeasController < ApplicationController
         end_params = params[:end_date]
         start_date = DateTime.new(start_params["year"].to_i, start_params["month"].to_i, start_params["day"].to_i)
         end_date = DateTime.new(end_params["year"].to_i, end_params["month"].to_i, end_params["day"].to_i)
-        @ideas = Idea.where("created_at between (?) and (?)", start_date, end_date)
+        @these = Idea.where("created_at between (?) and (?)", start_date, end_date)
         if params[:num]
           num = params[:num]
-          @ideas = @ideas.highest_voted.limit(num)
+          @ideas = @these.highest_voted.limit(num)
+          @ideas = @ideas.where("created_at between (?) and (?)", start_date, end_date)
         end
         #render :json =>  { :status => :ok }
     else
